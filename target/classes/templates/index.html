@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link data-th-href="@{/css/main.css?{id}(id=${timestamp})}" rel="stylesheet">
+    <title>Jendarey DevOps Bootcamp Training</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Jendarey DevOps Bootcamp Training</a>
+</nav>
+
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1 th:text="${title}">Default title.</h1>
+        <p th:text="${hostname}">Hostname: Default hostname.</p>
+        <p th:text="${ipAddress}">IP Address: Default IP address.</p>
+
+        <h2>Vote for Your Favorite DevOps Tools</h2> <!-- Modified -->
+        <form th:action="@{/submit}" method="post">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="email">Email Address:</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="course">Vote for a Tool:</label> <!-- Modified -->
+                <select name="course" id="course" class="form-control">
+                    <option th:each="course : ${courses}" th:value="${course}" th:text="${course}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <h2>Student Votes</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Course Voted</th>
+            </tr>
+            <tr th:each="vote : ${studentVotes}">
+                <td th:text="${vote.firstName}">John</td>
+                <td th:text="${vote.lastName}">Doe</td>
+                <td th:text="${vote.email}">john.doe@example.com</td>
+                <td th:text="${vote.course}">Course Name</td>
+            </tr>
+        </table>
+
+        <h2>Top Five Tools by Votes</h2> <!-- Modified -->
+        <table class="table table-striped">
+            <tr>
+                <th>Course</th>
+                <th>Votes</th>
+            </tr>
+            <tr th:each="course : ${topCourses}">
+                <td th:text="${course.course}">Course Name</td>
+                <td th:text="${course.voteCount}">0</td>
+            </tr>
+        </table>
+    </div>
+</main>
+
+<script data-th-src="@{/js/main.js}"></script>
+</body>
+</html>
