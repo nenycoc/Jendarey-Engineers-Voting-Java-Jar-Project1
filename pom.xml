@@ -7,7 +7,6 @@
     <groupId>com.jendareytechnologies</groupId>
     <artifactId>maven-project-demo</artifactId>
     <version>1.0</version>
-
     <name>maven-project-demo</name>
     <url></url>
 
@@ -50,9 +49,7 @@
     </dependencies>
 
     <build>
-
-        <finalName>maven-project-web</finalName>
-
+        <finalName>jar-voting-result-app</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
