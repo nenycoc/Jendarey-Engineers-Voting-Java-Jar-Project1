@@ -49,7 +49,7 @@
     </dependencies>
 
     <build>
-        <finalName>jar-voting-result-app</finalName>
+        <finalName>classA23-votingapp</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
